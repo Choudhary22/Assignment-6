@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="hotelModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="hotelModelStoreContainer">
+          <EntitySet Name="adminlogin" EntityType="hotelModel.Store.adminlogin" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="book" EntityType="hotelModel.Store.book" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="contactus" EntityType="hotelModel.Store.contactus" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="register" EntityType="hotelModel.Store.register" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="adminlogin">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="book">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="bookin" Type="varchar" MaxLength="30" />
+          <Property Name="bookout" Type="varchar" MaxLength="30" />
+          <Property Name="children" Type="varchar" MaxLength="30" />
+          <Property Name="rooms" Type="varchar" MaxLength="30" />
+          <Property Name="username" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="contactus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="firstname" Type="varchar" MaxLength="50" />
+          <Property Name="lastname" Type="varchar" MaxLength="30" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="mobileno" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="register">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="mobileno" Type="varchar" MaxLength="50" />
+          <Property Name="address" Type="varchar" MaxLength="50" />
+          <Property Name="profession" Type="varchar" MaxLength="50" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="hotelModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="hotelEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="adminlogins" EntityType="hotelModel.adminlogin" />
+          <EntitySet Name="books" EntityType="hotelModel.book" />
+          <EntitySet Name="contactus" EntityType="hotelModel.contactu" />
+          <EntitySet Name="registers" EntityType="hotelModel.register" />
+        </EntityContainer>
+        <EntityType Name="adminlogin">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="password" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="book">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="bookin" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="bookout" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="children" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="rooms" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="username" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="contactu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="firstname" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="lastname" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="email" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="mobileno" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="register">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="email" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="mobileno" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="address" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="profession" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="hotelModelStoreContainer" CdmEntityContainer="hotelEntities">
+          <EntitySetMapping Name="adminlogins">
+            <EntityTypeMapping TypeName="hotelModel.adminlogin">
+              <MappingFragment StoreEntitySet="adminlogin">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="books">
+            <EntityTypeMapping TypeName="hotelModel.book">
+              <MappingFragment StoreEntitySet="book">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="bookin" ColumnName="bookin" />
+                <ScalarProperty Name="bookout" ColumnName="bookout" />
+                <ScalarProperty Name="children" ColumnName="children" />
+                <ScalarProperty Name="rooms" ColumnName="rooms" />
+                <ScalarProperty Name="username" ColumnName="username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contactus">
+            <EntityTypeMapping TypeName="hotelModel.contactu">
+              <MappingFragment StoreEntitySet="contactus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="mobileno" ColumnName="mobileno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="registers">
+            <EntityTypeMapping TypeName="hotelModel.register">
+              <MappingFragment StoreEntitySet="register">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="mobileno" ColumnName="mobileno" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="profession" ColumnName="profession" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
